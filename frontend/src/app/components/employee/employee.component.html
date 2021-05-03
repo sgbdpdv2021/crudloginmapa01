@@ -75,10 +75,15 @@
           <a (click)="editEmployee(employee)" class="btn btn-secondary btn-sm">
             <i class="material-icons">edit</i>
           </a>
+          </td>
+          <td>
+          <a (click)="irMapa(employee)" class="btn btn-secondary btn-sm">
+            <i class="material-icons">mapa</i>
+          </a>
+        </td>
+          <td>
           <a (click)="deleteEmployee(employee._id, employeeForm)" class="btn btn-danger btn-sm">
             <i class="material-icons">delete</i>
-          </a>
-          <a class="nav-link" routerLink="/mapa" routerLinkActive="active">Mapa
           </a>
         </td>
       </tr>

@@ -6,7 +6,7 @@ import { PrivateTasksComponent } from './components/private-tasks/private-tasks.
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { EmployeeComponent } from './components/employee/employee.component';
-import {MapComponent } from './components/map/map.component'
+import { MapComponent } from './components/map/map.component'
 
 import { AuthGuard } from './auth.guard';
 
@@ -32,6 +32,10 @@ const routes: Routes = [
   },
   {
     path: 'mapa',
+    component: MapComponent
+  },
+  {
+    path: 'mapa/:longitude/:latitude/:office',  // Invocación con parámetros
     component: MapComponent
   },
   {

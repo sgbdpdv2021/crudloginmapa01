@@ -1,5 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
+import { ActivatedRoute } from '@angular/router';
+import { isNull } from 'util';
 
 @Component({
   selector: 'app-map',
@@ -7,11 +9,15 @@ import * as L from 'leaflet';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements AfterViewInit {
-  private map;
+  private map: any;
+
+  private longitude: any
+  private latitude: any
+  private office: any
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [ 37.35500, -5.98865],
+      center: [ this.longitude, this.latitude],
       zoom: 17
     });
 
@@ -21,12 +27,29 @@ export class MapComponent implements AfterViewInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
+    const marker = L.marker([this.longitude, this.latitude]);
+
+    marker.bindPopup(`<b>Office: ${this.office}</b><br>${this.longitude},${this.latitude}.`).openPopup();
+    marker.addTo(this.map);
+
     tiles.addTo(this.map);
   }
 
-  constructor() { }
-
+  // Usamos ActivatedRoute para recuperar parámetros
+  constructor(private _Activatedroute: ActivatedRoute) { }
+  // Ponemos valores iniciales del IES Punta del Verde venimos sin parámetros
   ngAfterViewInit(): void {
+    let longitude = this._Activatedroute.snapshot.paramMap.get("longitude");
+    let latitude = this._Activatedroute.snapshot.paramMap.get("latitude");
+    let office = this._Activatedroute.snapshot.paramMap.get("office")
+    if (isNull(latitude) || isNull(longitude)){
+      this.longitude = 37.35500
+      this.latitude = -5.98865
+    }else{
+      this.longitude = longitude
+      this.latitude = latitude
+      this.office = office
+    }
     this.initMap();
   }
 }

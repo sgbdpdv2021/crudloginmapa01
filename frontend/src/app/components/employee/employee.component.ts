@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { EmployeeService } from "../../services/employee.service";
 import { NgForm } from "@angular/forms";
 import { Employee } from "../../models/employee";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-employee",
@@ -11,7 +12,7 @@ import { Employee } from "../../models/employee";
   providers: [EmployeeService],
 })
 export class EmployeeComponent implements OnInit {
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService, private router: Router) {}
 
   ngOnInit() {
     console.log("entro")
@@ -57,5 +58,11 @@ export class EmployeeComponent implements OnInit {
       form.reset();
       this.employeeService.selectedEmployee = new Employee();
     }
+  }
+
+  // Viene del botón que manda los parámetros
+  // y esta función invoca a la ruta pasándole los valores
+  irMapa(employee: Employee){
+    this.router.navigate(['/mapa', employee.longitude, employee.latitude, employee.office]);
   }
 }
