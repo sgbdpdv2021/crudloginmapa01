@@ -17,3 +17,17 @@ https://www.youtube.com/watch?v=l_r9nRJ9YTk
 Código:
 
 https://github.com/FaztWeb/angular-node-jwt
+
+
+Seguimos también para los mapas:
+
+Tutorial angular leaflet:
+https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet
+https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-marker-service
+https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-popup-service
+https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-shape-service
+
+
+y
+
+https://leafletjs.com/examples.html
